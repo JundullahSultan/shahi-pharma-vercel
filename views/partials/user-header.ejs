@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>" dir="<%= dir %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#6c5ce7">
+    <link rel="apple-touch-icon" href="/img/logo.jpeg">
+    <link rel="icon" type="image/jpeg" href="/img/logo.jpeg">
+
+
+    <title><%= title %> | <%= t.common.pharmaB2B %></title>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/admin-style.css">
+    
+</head>
+<body>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="ph ph-pill"></i>
+                <span><%= t.common.pharmaB2B %></span>
+            </div>
+      
+            <nav>
+                <a href="/user/dashboard" class="<%= page === 'dashboard' ? 'active' : '' %>">
+                    <i class="ph ph-squares-four"></i> <%= t.dashboard %>
+                </a>
+                <a href="/user/request" class="<%= page === 'request' ? 'active' : '' %>">
+   
+                    <i class="ph ph-plus-circle"></i> <%= t.request %>
+                </a>
+                <a href="/user/my-requests" class="<%= page === 'my-requests' ? 'active' : '' %>">
+                    <i class="ph ph-notebook"></i> <%= t.my_requests %>
+             
+                </a>
+                <a href="/user/orders" class="<%= page === 'orders' ? 'active' : '' %>">
+                    <i class="ph ph-package"></i> <%= t.userOrders.myOrders %>
+                </a>
+                <a href="/user/settings" class="<%= page === 'settings' ? 'active' : '' %>">
+                    <i class="ph ph-gear"></i> <%= t.common.settings %>
+                </a>
+            </a>
+            </nav>
+            <div class="logout">
+                <a href="/user/logout"><i class="ph ph-sign-out"></i> <%= t.common.logout %></a>
+            
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <h1><%= title %></h1>
+            </header>
+            <script>
+    // 1. Get Elements
+    const toggleBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const htmlEl = document.documentElement;
+
+    // 2. Load Saved Theme on Startup
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    
+    if (savedTheme === 'light') {
+        applyLight();
+    } else {
+        applyDark();
+    }
+
+    // 3. Toggle Logic
+    toggleBtn.addEventListener('click', () => {
+        const currentTheme = htmlEl.getAttribute('data-theme');
+  
+        if (currentTheme === 'light') {
+            applyDark();
+        } else {
+            applyLight();
+        }
+    });
+    // --- Helper Functions ---
+    function applyLight() {
+        htmlEl.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+        themeIcon.classList.replace('ph-moon', 'ph-sun');
+        themeIcon.style.color = "#f59e0b"; // Orange Sun
+    }
+
+    function applyDark() {
+        htmlEl.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'dark');
+        themeIcon.classList.replace('ph-sun', 'ph-moon');
+        themeIcon.style.color = "var(--text-main)";
+    }
+</script>

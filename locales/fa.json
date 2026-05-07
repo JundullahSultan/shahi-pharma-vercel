@@ -1,0 +1,235 @@
+{
+  "direction": "rtl",
+  "home": "خانه",
+  "users": "کاربران",
+  "meds": "داروها",
+  "orders": "سفارش‌ها",
+  "exit": "خروج",
+  "request": "درخواست جدید",
+  "my_requests": "درخواست‌های من",
+  "dashboard": "داشبورد",
+  "welcome": "خوش آمدید",
+  "meta": {
+    "title": "PharmaB2B | آینده تأمین داروخانه"
+  },
+  "navbar": {
+    "brand": "PharmaB2B",
+    "about": "درباره ما"
+  },
+  "hero": {
+    "title": "قدرت‌بخش نسل جدید تأمین داروخانه‌ها",
+    "description": "بازار یکپارچه شاهی فارما که داروخانه‌ها را مستقیماً به تأمین‌کنندگان متصل می‌کند. سفارش‌ها را ساده کنید، موجودی را پیگیری کنید و کسب‌وکار خود را با شاهی فارما رشد دهید.",
+    "highlight": "بازار شاهی فارما",
+    "adminLogin": "ورود مدیر",
+    "userLogin": "ورود کاربر"
+  },
+  "features": {
+    "fastDelivery": {
+      "title": "تحویل سریع",
+      "description": "امروز سفارش دهید و ظرف ۲۴ ساعت محصولات خود را تحویل بگیرید. ما سرعت را در اولویت قرار می‌دهیم تا هرگز موجودی شما تمام نشود."
+    },
+    "verifiedQuality": {
+      "title": "کیفیت تأییدشده",
+      "description": "تمام داروها از تولیدکنندگان معتبر تأمین می‌شوند. ما اصالت ۱۰۰٪ محصولات را برای مشتریان شما تضمین می‌کنیم."
+    },
+    "trackGrowth": {
+      "title": "پیگیری رشد",
+      "description": "با داشبورد پیشرفته ما، تاریخچه سفارش‌ها، هزینه‌ها و سطح موجودی خود را به‌صورت لحظه‌ای بررسی کنید."
+    }
+  },
+  "common": {
+    "pharmaAdmin": "مدیریت فارما",
+    "pharmaB2B": "فارما بی۲بی",
+    "logout": "خروج",
+    "login": "ورود",
+    "email": "آدرس ایمیل",
+    "password": "رمز عبور",
+    "cancel": "لغو",
+    "delete": "حذف",
+    "edit": "ویرایش",
+    "save": "ذخیره",
+    "actions": "عملیات",
+    "search": "جستجو",
+    "date": "تاریخ",
+    "status": "وضعیت",
+    "role": "نقش",
+    "name": "نام",
+    "pharmacy": "داروخانه",
+    "price": "قیمت",
+    "quantity": "تعداد",
+    "stock": "موجودی",
+    "image": "تصویر",
+    "yesDelete": "بله، حذف شود",
+    "noCancel": "خیر، لغو شود",
+    "submit": "ارسال",
+    "processing": "در حال پردازش...",
+    "success": "موفقیت",
+    "error": "خطا",
+    "viewDetails": "مشاهده جزئیات",
+    "viewAll": "مشاهده همه",
+    "items": "اقلام",
+    "total": "مجموع",
+    "totalAmount": "مبلغ کل",
+    "medicines": "داروها",
+    "requests": "درخواست‌ها",
+    "new": "جدید",
+    "admin": "مدیر",
+    "settings": "تنظیمات"
+  },
+  "auth": {
+    "welcomeBack": "خوش آمدید",
+    "signInSubtitle": "برای مدیریت موجودی داروخانه خود وارد شوید",
+    "signIn": "ورود به سیستم",
+    "forgotPassword": "رمز عبور را فراموش کرده‌اید؟",
+    "createAccount": "ایجاد حساب کاربری",
+    "fullName": "نام کامل",
+    "pharmacyName": "نام داروخانه"
+  },
+  "adminDashboard": {
+    "title": "داشبورد مدیریت",
+    "overview": "نمای کلی داشبورد",
+    "totalUsers": "کل کاربران",
+    "totalMedicines": "کل داروها",
+    "totalOrders": "کل سفارش‌ها",
+    "pending": "در انتظار",
+    "approved": "تایید شده",
+    "cancelled": "لغو شده",
+    "recentOrders": "سفارش‌های اخیر",
+    "createUser": "ایجاد کاربر جدید",
+    "pharmacyRole": "داروخانه",
+    "adminRole": "مدیر"
+  },
+  "adminMedicines": {
+    "title": "مدیریت داروها",
+    "inventory": "موجودی داروها",
+    "addNew": "افزودن داروی جدید",
+    "company": "شرکت سازنده",
+    "availableStock": "موجودی در انبار",
+    "uploadImage": "آپلود تصویر",
+    "visibility": "قابلیت مشاهده",
+    "publishImmediately": "انتشار فوری؟",
+    "uploading": "در حال آپلود تصویر...",
+    "addBtn": "افزودن دارو",
+    "inStock": "موجود",
+    "outOfStock": "ناموجود",
+    "editModalTitle": "ویرایش دارو",
+    "newImageOptional": "تصویر جدید (اختیاری)",
+    "saveChanges": "ذخیره تغییرات",
+    "deleteModalTitle": "حذف دارو؟",
+    "deleteWarning": "این عملیات قابل بازگشت نیست."
+  },
+  "adminOrders": {
+    "title": "مدیریت سفارش‌ها",
+    "management": "مدیریت سفارش‌ها",
+    "filterAll": "همه سفارش‌ها",
+    "deletedMedicine": "داروی حذف شده",
+    "unknownUser": "ناشناس",
+    "noOrders": "هیچ سفارشی یافت نشد."
+  },
+  "adminUsers": {
+    "title": "مدیریت کاربران",
+    "management": "مدیریت کاربران",
+    "searchPlaceholder": "جستجوی کاربران...",
+    "addNew": "+ افزودن کاربر جدید",
+    "joined": "تاریخ عضویت",
+    "deleteModalTitle": "حذف کاربر؟",
+    "deleteWarning": "این عملیات قابل بازگشت نیست. کاربر برای همیشه حذف خواهد شد."
+  },
+  "errors": {
+    "sessionExpired": "نشست منقضی شد",
+    "sessionVanished": "نشست شما از بین رفت.",
+    "sessionMessage": "برای امنیت شما، چون نشست منقضی یا نامعتبر بود، به‌طور خودکار خارج شدید.",
+    "redirecting": "انتقال به صفحه ورود در",
+    "goToLogin": "رفتن به صفحه ورود",
+    "accessDeniedAdmin": "دسترسی غیرمجاز. فقط مدیران.",
+    "accessDeniedUser": "دسترسی غیرمجاز. فقط کاربران.",
+    "accessDeniedMessage": "شما این پیام را می‌بینید چون یا مجاز نیستید، یا نشست شما منقضی شده است.",
+    "escortingBack": "بازگرداندن شما به صفحه ورود در",
+    "takeMeLogin": "باشه، مرا به صفحه ورود ببر"
+  },
+  "userRequest": {
+    "pageTitle": "درخواست جدید",
+    "detailsTitle": "جزئیات درخواست",
+    "subtitle": "درخواست دارویی که در حال حاضر در انبار موجود نیست.",
+    "medName": "نام دارو",
+    "companyName": "نام شرکت",
+    "shapeDose": "شکل و دوز",
+    "tradeName": "نام تجاری",
+    "scientificName": "نام علمی",
+    "description": "توضیحات / یادداشت‌ها",
+    "submitBtn": "ارسال درخواست",
+    "sending": "در حال ارسال...",
+    "sentSuccess": "درخواست ارسال شد!",
+    "requestNew": "درخواست داروی جدید",
+    "noRequests": "هیچ درخواستی یافت نشد."
+  },
+  "userOrders": {
+    "itemDeleted": "آیتم حذف شده",
+    "itemUnavailable": "آیتم ناموجود",
+    "cancelOrder": "لغو سفارش",
+    "confirmCancel": "این سفارش لغو شود؟",
+    "emptyState": "هنوز سفارشی ثبت نشده است.",
+    "goToMarket": "رفتن به بازار",
+    "placeOrder": " سفارش",
+    "myOrders": "سفارش‌های من"
+  },
+
+  "adminRequests": {
+    "title": "درخواست‌های مشتریان",
+    "searchPlaceholder": "جستجوی درخواست‌ها...",
+    "user": "کاربر",
+    "medicine": "دارو",
+    "qty": "تعداد",
+    "confirmApprove": "آیا مطمئن هستید که می‌خواهید این درخواست را تایید کنید؟",
+    "confirmReject": "آیا مطمئن هستید که می‌خواهید این درخواست را رد کنید؟",
+    "errorUpdate": "خطا در بروزرسانی وضعیت",
+    "networkError": "خطای شبکه",
+    "modalTitle": "جزئیات درخواست",
+    "shapeDose": "شکل/دوز",
+    "noDescription": "بدون توضیحات"
+  },
+  "userLogin": {
+    "welcome": "خوش آمدید",
+    "subtitle": "برای مدیریت موجودی داروخانه خود وارد شوید",
+    "emailPlaceholder": "name@pharmacy.com",
+    "passwordPlaceholder": "••••••••",
+    "signInBtn": "ورود",
+    "forgotPass": "رمز عبور را فراموش کرده‌اید؟"
+  },
+  "userDashboard": {
+    "title": "داشبورد",
+    "addToCart": "افزودن به سبد",
+    "placeOrder": "سفارش",
+    "quantityLabel": "تعداد:"
+  },
+  "userMyRequests": {
+    "title": "درخواست‌های من",
+    "btnNewRequest": "درخواست داروی جدید",
+    "thMedName": "نام دارو",
+    "thCompany": "شرکت",
+    "thQty": "تعداد",
+    "thDate": "تاریخ درخواست",
+    "thStatus": "وضعیت",
+    "noRequestsIcon": "هیچ درخواستی یافت نشد."
+  },
+  "settings": {
+    "title": "تنظیمات",
+    "role": "مدیر سیستم",
+    "appearance": "ظاهر",
+    "appearanceDesc": "تغییر بین حالت تاریک و روشن",
+    "language": "زبان",
+    "languageDesc": "تغییر زبان داشبورد",
+    "logout": "خروج"
+  },
+  "aiAnalyst": {
+    "title": "تحلیلگر هوشمند شاهی",
+    "welcome": "سلام مدیر! داده‌های اخیر شما تحلیل شد. هر سوالی دارید بپرسید، مثل:",
+    "q1": "کدام داروها رو به اتمام هستند؟",
+    "q2": "چه کسی اخیراً سفارش داده؟",
+    "q3": "چند کاربر داریم؟",
+    "placeholder": "درباره موجودی، سفارش‌ها یا کاربران بپرسید...",
+    "thinking": "در حال فکر کردن...",
+    "error": "خطا در اتصال به هوش مصنوعی.",
+    "noResponse": "خطا: پاسخی از سرور دریافت نشد."
+  }
+}

@@ -1,0 +1,55 @@
+<script>
+    // 1. Get Elements
+    const toggleBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const htmlEl = document.documentElement;
+
+    // 2. Load Saved Theme on Startup
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    
+    if (savedTheme === 'light') {
+        applyLight();
+    } else {
+        applyDark();
+    }
+
+    // 3. Toggle Logic
+    toggleBtn.addEventListener('click', () => {
+        const currentTheme = htmlEl.getAttribute('data-theme');
+        if (currentTheme === 'light') {
+            applyDark();
+        } else {
+            applyLight();
+        }
+    });
+
+    // --- Helper Functions ---
+    function applyLight() {
+        htmlEl.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+        themeIcon.classList.replace('ph-moon', 'ph-sun');
+        themeIcon.style.color = "#f59e0b"; // Orange Sun
+    }
+
+    function applyDark() {
+        htmlEl.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'dark');
+        themeIcon.classList.replace('ph-sun', 'ph-moon');
+        themeIcon.style.color = "var(--text-main)";
+    }
+</script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, err => {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+    });
+  }
+</script>
+</body>
+</html>

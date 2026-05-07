@@ -1,0 +1,234 @@
+{
+  "direction": "ltr",
+  "home": "Home",
+  "users": "Users",
+  "meds": "Meds",
+  "orders": "Orders",
+  "exit": "Exit",
+  "request": "Request",
+  "my_requests": "My Requests",
+  "dashboard": "Dashboard",
+  "welcome": "Welcome",
+  "meta": {
+    "title": "PharmaB2B | The Future of Pharmacy Supply"
+  },
+  "navbar": {
+    "brand": "PharmaB2B",
+    "about": "About"
+  },
+  "hero": {
+    "title": "Powering the Next Generation of Pharmacy Supply",
+    "description": "The all-in-one Shahi Pharma marketplace connecting pharmacies directly to suppliers. Streamline orders, track inventory, and grow your business with Shahi Pharma.",
+    "highlight": "Shahi Pharma marketplace",
+    "adminLogin": "Admin Login",
+    "userLogin": "User Login"
+  },
+  "features": {
+    "fastDelivery": {
+      "title": "Fast Delivery",
+      "description": "Order today and get your supplies delivered within 24 hours. We prioritize speed so you never run out of stock."
+    },
+    "verifiedQuality": {
+      "title": "Verified Quality",
+      "description": "All medicines are sourced from certified manufacturers. We guarantee 100% authentic products for your customers."
+    },
+    "trackGrowth": {
+      "title": "Track Growth",
+      "description": "Use our advanced dashboard to track your order history, spending, and inventory levels in real-time."
+    }
+  },
+  "common": {
+    "pharmaAdmin": "PharmaAdmin",
+    "pharmaB2B": "PharmaB2B",
+    "logout": "Logout",
+    "login": "Login",
+    "email": "Email Address",
+    "password": "Password",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "save": "Save",
+    "actions": "Actions",
+    "search": "Search",
+    "date": "Date",
+    "status": "Status",
+    "role": "Role",
+    "name": "Name",
+    "pharmacy": "Pharmacy",
+    "price": "Price",
+    "quantity": "Quantity",
+    "stock": "Stock",
+    "image": "Image",
+    "yesDelete": "Yes, Delete",
+    "noCancel": "No, Cancel",
+    "submit": "Submit",
+    "processing": "Processing...",
+    "success": "Success",
+    "error": "Error",
+    "viewDetails": "View Details",
+    "viewAll": "View All",
+    "items": "Items",
+    "total": "Total",
+    "totalAmount": "Total Amount",
+    "medicines": "Medicines",
+    "requests": "Requests",
+    "new": "New",
+    "admin": "Admin",
+    "settings": "Settings"
+  },
+  "auth": {
+    "welcomeBack": "Welcome Back",
+    "signInSubtitle": "Sign in to manage your pharmacy inventory",
+    "signIn": "Sign In",
+    "forgotPassword": "Forgot your password?",
+    "createAccount": "Create Account",
+    "fullName": "Full Name",
+    "pharmacyName": "Pharmacy Name"
+  },
+  "adminDashboard": {
+    "title": "Admin Dashboard",
+    "overview": "Dashboard Overview",
+    "totalUsers": "Total Users",
+    "totalMedicines": "Total Medicines",
+    "totalOrders": "Total Orders",
+    "pending": "Pending",
+    "approved": "Approved",
+    "cancelled": "Cancelled",
+    "recentOrders": "Recent Orders",
+    "createUser": "Create New User",
+    "pharmacyRole": "Pharmacy",
+    "adminRole": "Admin"
+  },
+  "adminMedicines": {
+    "title": "Medicines",
+    "inventory": "Medicine Inventory",
+    "addNew": "Add New Medicine",
+    "company": "Company",
+    "availableStock": "Available in Stock",
+    "uploadImage": "Upload Image",
+    "visibility": "Visibility",
+    "publishImmediately": "Publish immediately?",
+    "uploading": "Uploading Image...",
+    "addBtn": "Add Medicine",
+    "inStock": "in stock",
+    "outOfStock": "Out of stock",
+    "editModalTitle": "Edit Medicine",
+    "newImageOptional": "New Image (Optional)",
+    "saveChanges": "Save Changes",
+    "deleteModalTitle": "Delete Medicine?",
+    "deleteWarning": "This action cannot be undone."
+  },
+  "adminOrders": {
+    "title": "Orders",
+    "management": "Order Management",
+    "filterAll": "All Orders",
+    "deletedMedicine": "Deleted Medicine",
+    "unknownUser": "Unknown",
+    "noOrders": "No orders found."
+  },
+  "adminUsers": {
+    "title": "Users",
+    "management": "User Management",
+    "searchPlaceholder": "Search users...",
+    "addNew": "+ Add New User",
+    "joined": "Joined",
+    "deleteModalTitle": "Delete User?",
+    "deleteWarning": "This action cannot be undone. The user will be permanently removed."
+  },
+  "errors": {
+    "sessionExpired": "Session Expired",
+    "sessionVanished": "Poof! Session Vanished.",
+    "sessionMessage": "For your security, we automatically logged you out because the session expired or is invalid.",
+    "redirecting": "Taking you to login in",
+    "goToLogin": "Go to Login Now",
+    "accessDeniedAdmin": "Access Denied. Admins Only. Obviously.",
+    "accessDeniedUser": "Access Denied. Users Only. Obviously.",
+    "accessDeniedMessage": "You’re seeing this because you’re either not authorized, your session expired, or the system collectively decided “nah.”",
+    "escortingBack": "Escorting you back to the login page in",
+    "takeMeLogin": "Fine, Take Me to Login"
+  },
+  "userRequest": {
+    "pageTitle": "Request",
+    "detailsTitle": "Request Details",
+    "subtitle": "Request a medicine that is not currently in our stock.",
+    "medName": "Medicine Name",
+    "companyName": "Company Name",
+    "shapeDose": "Shape & Dose",
+    "tradeName": "Trade Name",
+    "scientificName": "Scientific Name",
+    "description": "Description / Notes",
+    "submitBtn": "Submit Request",
+    "sending": "Sending...",
+    "sentSuccess": "Request Sent!",
+    "requestNew": "Request New Medicine",
+    "noRequests": "No requests found."
+  },
+  "userOrders": {
+    "itemDeleted": "Item Deleted",
+    "itemUnavailable": "Item Unavailable",
+    "cancelOrder": "Cancel Order",
+    "confirmCancel": "Cancel this order?",
+    "emptyState": "No orders found yet.",
+    "goToMarket": "Go to Marketplace",
+    "placeOrder": "Order",
+    "myOrders": "My Orders"
+  },
+  "adminRequests": {
+    "title": "Customer Requests",
+    "searchPlaceholder": "Search requests...",
+    "user": "User",
+    "medicine": "Medicine",
+    "qty": "Qty",
+    "confirmApprove": "Are you sure you want to approved this request?",
+    "confirmReject": "Are you sure you want to rejected this request?",
+    "errorUpdate": "Error updating status",
+    "networkError": "Network error",
+    "modalTitle": "Request Details",
+    "shapeDose": "Shape/Dose",
+    "noDescription": "No description"
+  },
+  "userLogin": {
+    "welcome": "Welcome Back",
+    "subtitle": "Sign in to manage your pharmacy inventory",
+    "emailPlaceholder": "name@pharmacy.com",
+    "passwordPlaceholder": "••••••••",
+    "signInBtn": "Sign In",
+    "forgotPass": "Forgot your password?"
+  },
+  "userDashboard": {
+    "title": "Dashboard",
+    "addToCart": "Add to Cart",
+    "placeOrder": " Order",
+    "quantityLabel": "Quantity:"
+  },
+  "userMyRequests": {
+    "title": "My Requests",
+    "btnNewRequest": "Request New Medicine",
+    "thMedName": "Medicine Name",
+    "thCompany": "Company",
+    "thQty": "Quantity",
+    "thDate": "Date Requested",
+    "thStatus": "Status",
+    "noRequestsIcon": "No requests found."
+  },
+  "settings": {
+    "title": "Settings",
+    "role": "Administrator",
+    "appearance": "Appearance",
+    "appearanceDesc": "Switch between Dark and Light mode.",
+    "language": "Language",
+    "languageDesc": "Change dashboard language",
+    "logout": "Logout"
+  },
+  "aiAnalyst": {
+    "title": "Shahi AI Analyst",
+    "welcome": "Hello Admin! I have analyzed your latest data. Ask me anything like:",
+    "q1": "Which medicines are running low?",
+    "q2": "Who ordered recently?",
+    "q3": "How many users do we have?",
+    "placeholder": "Ask about your inventory, orders, or users...",
+    "thinking": "Thinking...",
+    "error": "Error connecting to AI.",
+    "noResponse": "Error: No response from server."
+  }
+}

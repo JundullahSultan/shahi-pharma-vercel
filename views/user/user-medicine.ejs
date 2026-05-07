@@ -1,0 +1,58 @@
+<%- include('../partials/user-header', { title: t.userDashboard.title, page: 'dashboard' }) %>
+
+            <div class="medicine-grid">
+                <% medicines.forEach(med => { %>
+                    <div class="card product-card">
+                        <div class="product-img">
+            
+                            <img src="<%= med.imageURL %>" alt="<%= med.name %>">
+                        </div>
+                        
+                        <div class="product-info">
+     
+                            <h3><%= med.name %></h3>
+                            <p class="company"><%= med.companyName %></p>
+                            <div class="price-row">
+               
+                                <span class="price">؋  <%= med.price %></span>
+                                <span class="stock"><%= med.stock %> <%= t.adminMedicines.inStock %></span>
+                            </div>
+
+             
+                            <form class="order-form"> 
+                                <input type="hidden" name="user" value="<%= user.id %>">
+                                <input type="hidden" name="price" value="<%= med.price %>">
+
+         
+                                <input type="hidden" name="medicineId" value="<%= med._id %>">
+                                
+                                <div class="order-placement">
+                                    <div class="qty-control">
+                                    <label><%= t.userDashboard.quantityLabel %></label>
+                                    <input type="number" name="quantity" min="1" max="<%= med.stock %>" value="1" required>
+                                    </div>
+
+                                    <button type="submit" class="order-btn btn-sm">
+                                        <%= t.userDashboard.placeOrder %>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                <% }) %>
+ 
+            </div>
+        </main>
+<%- include('../partials/mobile-nav', { page: 'dashboard' }) %>
+<script>
+    // This highlights the icon that matches the current page URL
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('.mobile-bottom-nav a').forEach(link => {
+        if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active');
+        }
+    });
+</script>
+    <script src="/js/distroyGoBack.js"></script>
+    <script src="/js/user-medicine.js"></script>
+<%- include('../partials/footer') %>

@@ -1,0 +1,234 @@
+{
+  "direction": "rtl",
+  "home": "کور",
+  "users": "کاروونکي",
+  "meds": "درمل",
+  "orders": "فرمایشونه",
+  "exit": "وتل",
+  "request": "نوې غوښتنه",
+  "my_requests": "زما غوښتنې",
+  "dashboard": "ډشبورډ",
+  "welcome": "ښه راغلاست",
+  "meta": {
+    "title": "PharmaB2B | د درملتون اکمال راتلونکی"
+  },
+  "navbar": {
+    "brand": "PharmaB2B",
+    "about": "زموږ په اړه"
+  },
+  "hero": {
+    "title": "د درملتونونو د اکمال نوې دوره ځواکمنوو",
+    "description": "د شاهي فارما یو بشپړ بازار چې درملتونونه په مستقیم ډول له عرضه کوونکو سره نښلوي. فرمایشونه منظم کړئ، موجودي وڅارئ او خپل کاروبار د شاهي فارما سره وده ورکړئ.",
+    "highlight": "د شاهي فارما بازار",
+    "adminLogin": "د مدیر ننوتل",
+    "userLogin": "د کارونکي ننوتل"
+  },
+  "features": {
+    "fastDelivery": {
+      "title": "چټک تحویل",
+      "description": "نن فرمایش وکړئ او خپل توکي په ۲۴ ساعتونو کې ترلاسه کړئ. موږ سرعت ته لومړیتوب ورکوو څو ستاسو موجودي هېڅکله خلاصه نه شي."
+    },
+    "verifiedQuality": {
+      "title": "تصدیق شوی کیفیت",
+      "description": "ټول درمل له تصدیق شوو تولیدونکو څخه ترلاسه کېږي. موږ ستاسو د مشتریانو لپاره ۱۰۰٪ اصلي محصولات تضمینوو."
+    },
+    "trackGrowth": {
+      "title": "د ودې څارنه",
+      "description": "زموږ پرمختللی ډشبورډ وکاروئ ترڅو د فرمایش تاریخچه، لګښتونه او موجودي په ریښتیني وخت کې وڅارئ."
+    }
+  },
+  "common": {
+    "pharmaAdmin": "فارما مدیریت",
+    "pharmaB2B": "فارما بی۲بی",
+    "logout": "وتل",
+    "login": "ننوتل",
+    "email": "بریښنالیک",
+    "password": "پټنوم",
+    "cancel": "لغوه",
+    "delete": "حذف",
+    "edit": "سمون",
+    "save": "ثبتول",
+    "actions": "کړنې",
+    "search": "لټون",
+    "date": "نېټه",
+    "status": "حالت",
+    "role": "رول",
+    "name": "نوم",
+    "pharmacy": "درملتون",
+    "price": "بیه",
+    "quantity": "تعداد",
+    "stock": "موجودي",
+    "image": "انځور",
+    "yesDelete": "هو، حذف یې کړئ",
+    "noCancel": "نه، لغوه یې کړئ",
+    "submit": "لیږل",
+    "processing": "د پروسس په حال کې...",
+    "success": "بریالی",
+    "error": "تېروتنه",
+    "viewDetails": "جزئیات کتل",
+    "viewAll": "ټول کتل",
+    "items": "توکي",
+    "total": "مجموعه",
+    "totalAmount": "ټوله بیه",
+    "medicines": "درملونه",
+    "requests": "غوښتنې",
+    "new": "نوی",
+    "admin": "مدیر",
+    "settings": "تنظیمونه"
+  },
+  "auth": {
+    "welcomeBack": "بېرته ښه راغلاست",
+    "signInSubtitle": "د خپل درملتون موجودي مدیریت لپاره سیستم ته ننوځئ",
+    "signIn": "ننوتل",
+    "forgotPassword": "پټنوم مو هېر شوی؟",
+    "createAccount": "حساب جوړ کړئ",
+    "fullName": "بشپړ نوم",
+    "pharmacyName": "د درملتون نوم"
+  },
+  "adminDashboard": {
+    "title": "د مدیر ډشبورډ",
+    "overview": "د ډشبورډ عمومي کتنه",
+    "totalUsers": "ټول کاروونکي",
+    "totalMedicines": "ټول درملونه",
+    "totalOrders": "ټول فرمایشونه",
+    "pending": "په انتظار",
+    "approved": "تایید شوی",
+    "cancelled": "لغوه شوی",
+    "recentOrders": "وروستي فرمایشونه",
+    "createUser": "نوی کارونکی جوړ کړئ",
+    "pharmacyRole": "درملتون",
+    "adminRole": "مدیر"
+  },
+  "adminMedicines": {
+    "title": "د درملو مدیریت",
+    "inventory": "د درملو موجودي",
+    "addNew": "نوی درمل اضافه کړئ",
+    "company": "کمپني",
+    "availableStock": "په ګودام کې موجود",
+    "uploadImage": "انځور پورته کړئ",
+    "visibility": "لیدنه",
+    "publishImmediately": "سمدستي خپور شي؟",
+    "uploading": "انځور د پورته کېدو په حال کې...",
+    "addBtn": "درمل اضافه کړئ",
+    "inStock": "موجود",
+    "outOfStock": "ناموجود",
+    "editModalTitle": "درمل سم کړئ",
+    "newImageOptional": "نوی انځور (اختیاري)",
+    "saveChanges": "تغیرات ثبت کړئ",
+    "deleteModalTitle": "درمل حذف کړئ؟",
+    "deleteWarning": "دا عمل د بېرته ګرځېدو وړ نه دی."
+  },
+  "adminOrders": {
+    "title": "د فرمایشونو مدیریت",
+    "management": "د فرمایشونو مدیریت",
+    "filterAll": "ټول فرمایشونه",
+    "deletedMedicine": "حذف شوی درمل",
+    "unknownUser": "ناپیژندل شوی",
+    "noOrders": "هېڅ فرمایش ونه موندل شو."
+  },
+  "adminUsers": {
+    "title": "د کاروونکو مدیریت",
+    "management": "د کاروونکو مدیریت",
+    "searchPlaceholder": "کاروونکي وپلټئ...",
+    "addNew": "+ نوی کارونکی اضافه کړئ",
+    "joined": "یوځای شوی",
+    "deleteModalTitle": "کارونکی حذف کړئ؟",
+    "deleteWarning": "دا عمل د بېرته ګرځېدو وړ نه دی. کارونکی به د تل لپاره حذف شي."
+  },
+  "errors": {
+    "sessionExpired": "ناسته پای ته ورسېده",
+    "sessionVanished": "ستاسو ناسته ورکه شوه.",
+    "sessionMessage": "ستاسو د خوندیتوب لپاره، موږ تاسو په اتوماتيک ډول له سیستم څخه وویستل ځکه چې ناسته پای ته رسېدلې یا نامعتبره وه.",
+    "redirecting": "د ننوتلو پاڼې ته انتقال په",
+    "goToLogin": "د ننوتلو پاڼې ته لاړ شئ",
+    "accessDeniedAdmin": "لاسرسۍ رد شو. یوازې مدیران.",
+    "accessDeniedUser": "لاسرسۍ رد شو. یوازې کاروونکي.",
+    "accessDeniedMessage": "تاسو دا پیغام ځکه ګورئ چې یا اجازه نلرئ، یا ستاسو ناسته پای ته رسېدلې ده.",
+    "escortingBack": "بېرته د ننوتلو پاڼې ته ستنول په",
+    "takeMeLogin": "سمه ده، ما د ننوتلو پاڼې ته یوسه"
+  },
+  "userRequest": {
+    "pageTitle": "نوې غوښتنه",
+    "detailsTitle": "د غوښتنې جزئیات",
+    "subtitle": "د داسې درملو غوښتنه وکړئ چې اوس مهال زموږ په ذخیره کې نشته.",
+    "medName": "د درمل نوم",
+    "companyName": "د کمپنۍ نوم",
+    "shapeDose": "شکل او ډوز",
+    "tradeName": "تجارتي نوم",
+    "scientificName": "علمي نوم",
+    "description": "توضیحات / یادښتونه",
+    "submitBtn": "غوښتنه ولیږئ",
+    "sending": "د لیږلو په حال کې...",
+    "sentSuccess": "غوښتنه ولیږل شوه!",
+    "requestNew": "د نوي درمل غوښتنه",
+    "noRequests": "هېڅ غوښتنه ونه موندل شوه."
+  },
+  "userOrders": {
+    "itemDeleted": "توکی حذف شوی",
+    "itemUnavailable": "توکی نشته",
+    "cancelOrder": "فرمایش لغوه کړئ",
+    "confirmCancel": "دا فرمایش لغوه کړئ؟",
+    "emptyState": "تر اوسه هېڅ فرمایش ندی ثبت شوی.",
+    "goToMarket": "بازار ته لاړ شئ",
+    "placeOrder": "فرمایش  ",
+    "myOrders": "زما فرمایشونه"
+  },
+  "adminRequests": {
+    "title": "د پیرودونکو غوښتنې",
+    "searchPlaceholder": "غوښتنې وپلټئ...",
+    "user": "کارونکی",
+    "medicine": "درمل",
+    "qty": "تعداد",
+    "confirmApprove": "ایا تاسو ډاډه یاست چې غواړئ دا غوښتنه تایید کړئ؟",
+    "confirmReject": "ایا تاسو ډاډه یاست چې غواړئ دا غوښتنه رد کړئ؟",
+    "errorUpdate": "د حالت په تازه کولو کې تېروتنه",
+    "networkError": "د شبکې تېروتنه",
+    "modalTitle": "د غوښتنې توضیحات",
+    "shapeDose": "شکل/ډوز",
+    "noDescription": "توضیحات نشته"
+  },
+  "userLogin": {
+    "welcome": "بېرته ښه راغلاست",
+    "subtitle": "د خپل درملتون موجودي مدیریت لپاره سیستم ته ننوځئ",
+    "emailPlaceholder": "name@pharmacy.com",
+    "passwordPlaceholder": "••••••••",
+    "signInBtn": "ننوتل",
+    "forgotPass": "پټنوم مو هېر شوی؟"
+  },
+  "userDashboard": {
+    "title": "ډشبورډ",
+    "addToCart": "په ټوکرۍ کې اچول",
+    "placeOrder": "فرمایش  ",
+    "quantityLabel": "تعداد:"
+  },
+  "userMyRequests": {
+    "title": "زما غوښتنې",
+    "btnNewRequest": "د نوي درمل غوښتنه",
+    "thMedName": "د درمل نوم",
+    "thCompany": "کمپني",
+    "thQty": "تعداد",
+    "thDate": "د غوښتنې نېټه",
+    "thStatus": "حالت",
+    "noRequestsIcon": "هېڅ غوښتنه ونه موندل شوه."
+  },
+  "settings": {
+    "title": "ترتیبات",
+    "role": "مدیر",
+    "appearance": "بڼه",
+    "appearanceDesc": "د تور او روښانه حالت ترمنځ بدلون.",
+    "language": "ژبه",
+    "languageDesc": "د ډشبورډ ژبه بدل کړئ",
+    "logout": "وتل"
+  },
+  "aiAnalyst": {
+    "title": "د شاهي AI شنونکی",
+    "welcome": "سلام مدیر! ستاسو وروستي معلومات تحلیل شول. هر څه پوښتنه وکړئ، لکه:",
+    "q1": "کوم درمل مخ په خلاصیدو دي؟",
+    "q2": "چا پدې وروستیو کې فرمایش ورکړی؟",
+    "q3": "موږ څومره کاروونکي لرو؟",
+    "placeholder": "د موجودي، فرمایشونو یا کاروونکو په اړه پوښتنه وکړئ...",
+    "thinking": "فکر کول...",
+    "error": "له AI سره په نښلیدو کې تېروتنه.",
+    "noResponse": "تېروتنه: له سرور څخه ځواب ترلاسه نشو."
+  }
+}

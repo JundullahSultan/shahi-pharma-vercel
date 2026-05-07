@@ -1,0 +1,237 @@
+<%- include('partials/admin-header', {title: t.adminRequests.title, page: 'requests'}) %>
+
+<section class="card">
+    <div class="card-header customer-card-header">
+        <h2><%= t.adminRequests.title %></h2>
+        <div class="toolbar">
+            <div class="search-bar">
+                <i class="ph ph-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="<%= t.adminRequests.searchPlaceholder %>">
+            </div>
+        </div>
+  
+    </div>
+
+    <div class="sheet-container">
+        <table class="sheet-table">
+            <thead>
+                <tr>
+                    <th><%= t.adminRequests.user %></th>
+                    <th><%= t.adminRequests.medicine %></th>
+                 
+                    <th><%= t.adminRequests.qty %></th>
+                    <th><%= t.common.date %></th>
+                    <th><%= t.common.status %></th>
+                    <th><%= t.common.actions %></th>
+                </tr>
+            </thead>
+         
+            <tbody>
+                <% if (requests.length > 0) { %>
+                    <% requests.forEach(req => { %>
+                        <tr id="row-<%= req._id %>">
+                        
+                            <td class="readonly-cell">
+                                <div class="user-info">
+                                    <div class="avatar-sm"><%= req.user ? req.user.name[0] : '?' %></div>
+                                    <span><%= req.user ? req.user.name : t.adminOrders.unknownUser %></span>
+                                </div>
+                            </td>
+                            <td class="readonly-cell">
+         
+                                <strong><%= req.medicineName %></strong>
+                                <div style="font-size: 0.8rem; color: var(--text-muted);"><%= req.companyName %></div>
+                            </td>
+         
+                            <td class="readonly-cell"><%= req.quantity %></td>
+                            <td class="readonly-cell"><%= new Date(req.createdAt).toLocaleDateString() %></td>
+                            <td class="readonly-cell">
+                    
+                                <span class="badge <%= req.status.toLowerCase() %>"><%= req.status %></span>
+                            </td>
+                            <td class="readonly-cell">
+                          
+                                <div class="actions">
+                                    <button class="btn-icon btn-request-details" onclick="openDetails('<%= JSON.stringify(req) %>')">
+                                        <i class="ph ph-eye"></i>
+                                    </button>
+
+                                    <button class="btn-icon delete-btn delete-request-btn" data-id="<%= req._id %>" title="Delete Request">
+                                        <i class="ph ph-trash"></i>
+                                    </button>
+
+                                    <% if (req.status === 'pending') { %>
+                                 
+                                        <button class="btn-icon approve" onclick="updateStatus('<%= req._id %>', 'approved')">
+                                            <i class="ph ph-check"></i>
+                                        </button>
+ 
+                                        <button class="btn-icon cancel" onclick="updateStatus('<%= req._id %>', 'rejected')">
+                                            <i class="ph ph-x"></i>
+         
+                                        </button>
+                                    <% } %>
+                               
+                                </div>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+     
+                    <tr><td class="readonly-cell" colspan="6" style="text-align: center; padding: 2rem;"><%= t.userRequest.noRequests %></td></tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<dialog id="detailsModal" class="custom-modal">
+    <div class="modal-content" style="max-width: 500px;">
+        <div class="card-header">
+            <h2 id="modalTitle"><%= t.adminRequests.modalTitle %></h2>
+            <button onclick="document.getElementById('detailsModal').close()" class="btn-text"><i class="ph ph-x"></i></button>
+       
+        </div>
+        <div id="modalBody" style="display: grid; gap: 1rem;">
+            </div>
+    </div>
+</dialog>
+
+<div id="toast-container"></div>
+
+<div id="deleteRequestModal" class="custom-backdrop">
+    <div class="modal-content confirmation-box">
+        <div class="icon-box danger large">
+            <i class="ph ph-trash"></i>
+        </div>
+        <h3><%= t.common.delete %>?</h3>
+        <p><%= t.adminRequests.deleteConfirmMessage || "Are you sure you want to permanently delete this request?" %></p>
+        
+        <div class="modal-actions">
+            <button class="btn-cancel" onclick="closeDeleteModal()"><%= t.common.cancel %></button>
+            <button class="btn-delete" id="confirmReqDeleteBtn"><%= t.common.delete %></button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // --- CRITICAL FIX: Move Modal to Body ---
+    document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById('deleteRequestModal');
+        const detailsModal = document.getElementById('detailsModal'); // Also move the details modal!
+        const toastContainer = document.getElementById('toast-container');
+        
+        if(modal) document.body.appendChild(modal);
+        if(detailsModal) document.body.appendChild(detailsModal);
+        if(toastContainer) document.body.appendChild(toastContainer);
+    });
+
+    function showToast(message, type = 'success') {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        const icon = type === 'success' ? '<i class="ph ph-check-circle"></i>' : '<i class="ph ph-warning-circle"></i>';
+        toast.className = `toast ${type}`; 
+        toast.innerHTML = `${icon} <span>${message}</span>`;
+        container.appendChild(toast);
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateY(-20px)';
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
+
+    // [Keep your updateStatus function here...]
+    async function updateStatus(id, status) {
+        // ... (same as previous code) ...
+        // Re-paste logic if needed, omitted for brevity
+        let msg = status === 'approved' ? 
+            "<%= t.adminRequests.confirmApprove %>" : 
+            "<%= t.adminRequests.confirmReject %>";
+        if(!confirm(msg)) return;
+
+        try {
+            const res = await fetch(`/admin/requests/${id}/status`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ status })
+            });
+            if (res.ok) {
+                showToast(`Request ${status} successfully`, 'success');
+                setTimeout(() => location.reload(), 1000); 
+            } else {
+                showToast('<%= t.adminRequests.errorUpdate %>', 'error');
+            }
+        } catch (err) {
+            showToast('<%= t.adminRequests.networkError %>', 'error');
+        }
+    }
+
+    // [Keep your openDetails function here...]
+    function openDetails(reqString) {
+        const req = JSON.parse(reqString);
+        const modal = document.getElementById('detailsModal');
+        const body = document.getElementById('modalBody');
+        // ... fill body innerHTML ...
+        body.innerHTML = `
+            <div class="detail-row"><strong><%= t.adminRequests.medicine %>:</strong> ${req.medicineName}</div>
+            <div class="detail-row"><strong><%= t.adminMedicines.company %>:</strong> ${req.companyName}</div>
+            <div class="detail-row"><strong><%= t.adminRequests.shapeDose %>:</strong> ${req.shapeAndDose}</div>
+            <div class="detail-row"><strong><%= t.userRequest.tradeName %>:</strong> ${req.tradeName || '-'}</div>
+            <div class="detail-row"><strong><%= t.userRequest.scientificName %>:</strong> ${req.scientificName || '-'}</div>
+            <div class="detail-row"><strong><%= t.userRequest.description %>:</strong> <p style="margin-top:5px; background:rgba(0,0,0,0.2); padding:10px; border-radius:8px;">${req.description || '<%= t.adminRequests.noDescription %>'}</p></div>
+        `;
+        modal.showModal();
+    }
+
+    // --- Delete Modal Logic ---
+    const deleteModal = document.getElementById('deleteRequestModal');
+    const confirmBtn = document.getElementById('confirmReqDeleteBtn');
+    let requestIdToDelete = null;
+
+    function openDeleteModal(id) {
+        requestIdToDelete = id;
+        deleteModal.classList.add('active');
+    }
+
+    function closeDeleteModal() {
+        requestIdToDelete = null;
+        deleteModal.classList.remove('active');
+    }
+
+    deleteModal.addEventListener('click', (e) => {
+        if(e.target === deleteModal) closeDeleteModal();
+    });
+
+    document.querySelectorAll('.delete-request-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            openDeleteModal(btn.dataset.id);
+        });
+    });
+
+    confirmBtn.addEventListener('click', async () => {
+        if (!requestIdToDelete) return;
+        confirmBtn.innerText = '...';
+        try {
+            const res = await fetch(`/admin/requests/${requestIdToDelete}`, { method: 'DELETE' });
+            if (res.ok) {
+                const row = document.getElementById(`row-${requestIdToDelete}`);
+                if (row) {
+                    row.style.opacity = '0';
+                    setTimeout(() => row.remove(), 300);
+                }
+                showToast('Request deleted successfully', 'success');
+            } else {
+                showToast('Failed to delete request', 'error');
+            }
+        } catch (err) {
+            console.error(err);
+            showToast('Network Error', 'error');
+        } finally {
+            closeDeleteModal();
+            confirmBtn.innerText = '<%= t.common.delete %>';
+        }
+    });
+</script>
+
+<%- include('partials/admin-footer', { page: 'requests' }) %>

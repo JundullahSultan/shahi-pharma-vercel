@@ -1,0 +1,268 @@
+<%- include('partials/admin-header', { title: t.adminDashboard.title, page: 'dashboard' }) %>
+
+<div id="toast-container"></div>
+
+<section class="stats-grid">
+    <div class="card stat-card">
+        <div class="icon-box blue"><i class="ph ph-users"></i></div>
+        <div class="stat-card-number">
+            <h3><%= totalUsers %></h3>
+            <p><%- t.adminDashboard.totalUsers %></p>
+        </div>
+    </div>
+    <div class="card stat-card">
+        <div class="icon-box purple"><i class="ph ph-flask"></i></div>
+        <div class="stat-card-number">
+            <h3><%= totalMedicines %></h3>
+            <p><%- t.adminDashboard.totalMedicines %></p>
+        </div>
+    </div>
+    <div class="card stat-card">
+        <div class="icon-box green"><i class="ph ph-shopping-cart"></i></div>
+        <div class="stat-card-number">
+            <h3><%= totalOrders %></h3>
+            <p><%- t.adminDashboard.totalOrders %></p>
+        </div>
+    </div>
+</section>
+
+<section class="breakdown-grid">
+    <div class="card breakdown-card pending">
+        <span><%- t.adminDashboard.pending %></span>
+        <h2><%= pendingOrders %></h2>
+    </div>
+    <div class="card breakdown-card approved">
+        <span><%- t.adminDashboard.approved %></span>
+        <h2><%= approvedOrders %></h2>
+    </div>
+    <div class="card breakdown-card cancelled">
+        <span><%- t.adminDashboard.cancelled %></span>
+        <h2><%= cancelledOrders %></h2>
+    </div>
+</section>
+
+<div class="content-split">
+    <section class="card recent-orders">
+        <div class="card-header">
+            <h2><%- t.adminDashboard.recentOrders %></h2>
+            <button class="btn-text"><a href="/admin/orders"><%- t.common.viewAll %></a></button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th><%- t.userRequest.medName %></th>
+                    <th><%- t.common.pharmacy %></th>
+                    <th><%- t.common.date %></th>
+                    <th><%- t.common.total %></th>
+                    <th><%- t.common.status %></th>
+                    <th><%- t.common.actions %></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% orders.forEach(order => { %>
+                <tr id="order-row-<%= order._id %>">
+                    <td><strong><%= order.medicineId ? order.medicineId.name : t.adminOrders.deletedMedicine %></strong></td>
+                    
+                    <td><%= order.user ? (order.user.pharmacy || order.user.name) : t.adminOrders.unknownUser %></td>
+                    
+                    <% const orderDate = new Date(order.createdAt).toLocaleDateString('en-US') %>
+                    <td><%= orderDate %></td>
+                    
+                    <td>$<%= order.totalPrice %></td>
+                    
+                    <td>
+                        <span class="badge <%= order.status %>" id="status-badge-<%= order._id %>">
+                            <%= order.status %>
+                        </span>
+                    </td>
+                    
+                    <td>
+                        <% if(order.status === 'pending') { %>
+                            <div class="actions" id="actions-<%= order._id %>">
+                                <button class="btn-icon approve dashboard-action-btn" 
+                                        title="Approve"
+                                        data-id="<%= order._id %>"
+                                        data-status="approved">
+                                    <i class="ph ph-check"></i>
+                                </button>
+                                
+                                <button class="btn-icon cancel dashboard-action-btn" 
+                                        title="Cancel"
+                                        data-id="<%= order._id %>"
+                                        data-status="cancelled">
+                                    <i class="ph ph-x"></i>
+                                </button>
+                            </div>
+                        <% } else { %>
+                            <span class="text-muted">-</span>
+                        <% } %>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="card create-user">
+        <div class="card-header">
+            <h2><%- t.adminDashboard.createUser %></h2>
+        </div>
+        <form id="createUserForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label><%- t.auth.fullName %></label>
+                <input type="text" name="name" placeholder="e.g. John Doe" required>
+            </div>
+            <div class="form-group">
+                <label><%- t.auth.pharmacyName %></label>
+                <input type="text" name="pharmacy" placeholder="Pharmacy Name" required>
+            </div>
+            <div class="form-group">
+                <label><%- t.common.email %></label>
+                <input type="email" name="email" placeholder="pharmacy@email.com" required>
+            </div>
+            <div class="form-group">
+                <label><%- t.common.password %></label>
+                <input type="password" name="password" placeholder="••••••••" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Profile Image</label>
+                <input type="file" name="imageURL" accept="image/*" class="file-input">
+            </div>
+
+            <div class="form-group">
+                <label><%- t.common.role %></label>
+                <div class="radio-group">
+                    <label class="radio-box">
+                        <input type="radio" name="role" value="user" checked>
+                        <span><%- t.adminDashboard.pharmacyRole %></span>
+                    </label>
+                    <label class="radio-box">
+                        <input type="radio" name="role" value="admin">
+                        <span><%- t.adminDashboard.adminRole %></span>
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn-primary"><%- t.auth.createAccount %></button>
+        </form>
+    </section>
+</div>
+
+<script>
+    // --- 1. Toast Helper Function ---
+    // (Ideally, move this to a shared js file to avoid repetition)
+    function showToast(message, type = 'success') {
+        const container = document.getElementById('toast-container');
+        // Fallback if container is missing
+        if (!container) return alert(message); 
+
+        const toast = document.createElement('div');
+        const icon = type === 'success' ? '<i class="ph ph-check-circle"></i>' : '<i class="ph ph-warning-circle"></i>';
+        
+        toast.className = `toast ${type}`; 
+        toast.innerHTML = `${icon} <span>${message}</span>`;
+        
+        container.appendChild(toast);
+
+        // Remove after 3 seconds
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateY(-20px)';
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
+
+    // --- 2. Handle Order Actions (Approve/Cancel) ---
+    document.querySelectorAll('.dashboard-action-btn').forEach(btn => {
+        btn.addEventListener('click', async function() {
+            const id = this.dataset.id;
+            const newStatus = this.dataset.status;
+            
+            // Visual feedback
+            const originalHTML = this.innerHTML;
+            this.innerHTML = '<i class="ph ph-spinner ph-spin"></i>';
+            this.disabled = true;
+
+            try {
+                // Call the API endpoint (defined in admin.js exports.updateOrderStatus)
+                const res = await fetch(`/admin/orders/${id}/status`, { 
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: newStatus })
+                });
+
+                const result = await res.json();
+
+                if (res.ok) {
+                    showToast(`Order ${newStatus} successfully!`, 'success');
+                    
+                    // Update UI without reload
+                    const badge = document.getElementById(`status-badge-${id}`);
+                    const actionDiv = document.getElementById(`actions-${id}`);
+                    
+                    if (badge) {
+                        badge.className = `badge ${newStatus}`;
+                        badge.innerText = newStatus;
+                    }
+                    // Hide buttons since it's no longer pending
+                    if (actionDiv) {
+                        actionDiv.innerHTML = '<span class="text-muted">-</span>';
+                    }
+                } else {
+                    showToast(result.message || 'Update failed', 'error');
+                    this.innerHTML = originalHTML;
+                    this.disabled = false;
+                }
+            } catch (err) {
+                console.error(err);
+                showToast('Network error', 'error');
+                this.innerHTML = originalHTML;
+                this.disabled = false;
+            }
+        });
+    });
+
+    // --- 3. Handle Create User Form ---
+    document.getElementById('createUserForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+        const btn = form.querySelector('button[type="submit"]');
+        const originalText = btn.innerText;
+        
+        btn.innerText = 'Creating...';
+        btn.disabled = true;
+
+        try {
+            const response = await fetch('/admin/users', { 
+                method: 'POST',
+                body: formData 
+            });
+            
+            const result = await response.json();
+
+            if (response.ok) {
+                showToast('User created successfully!', 'success');
+                form.reset();
+                // Optional: Reload after a short delay to see the new count
+                setTimeout(() => window.location.reload(), 1500);
+            } else {
+                showToast(result.message || 'Failed to create user', 'error');
+            }
+        } catch (err) {
+            console.error('Error:', err);
+            showToast('Network error occurred', 'error');
+        } finally {
+            btn.innerText = originalText;
+            btn.disabled = false;
+        }
+    });
+
+    // Fix for Mobile Modal Position (if you add modals later)
+    document.addEventListener("DOMContentLoaded", () => {
+        const toastContainer = document.getElementById('toast-container');
+        if(toastContainer) document.body.appendChild(toastContainer);
+    });
+</script>
+
+<%- include('partials/admin-footer', { page: 'dashboard' }) %>

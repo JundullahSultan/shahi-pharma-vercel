@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>" dir="<%= dir %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#6c5ce7">
+    <link rel="apple-touch-icon" href="/img/logo.jpeg">
+    <link rel="icon" type="image/jpeg" href="/img/logo.jpeg">
+
+    <title><%= title %> | <%= t.common.pharmaAdmin %></title>
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/styles/admin-style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="ph ph-pill"></i>
+                <span><%= t.common.pharmaAdmin %></span>
+            </div>
+            
+            <nav>
+                <a href="/admin/dashboard" class="<%= page === 'dashboard' ? 'active' : '' %>">
+                    <i class="ph ph-squares-four"></i> <%= t.dashboard %>
+                </a>
+                <a href="/admin/users" class="<%= page === 'users' ? 'active' : '' %>">
+                    <i class="ph ph-users"></i> <%= t.users %>
+                </a>
+                <a href="/admin/medicines" class="<%= page === 'medicines' ? 'active' : '' %>">
+                    <i class="ph ph-flask"></i> <%= t.common.medicines %>
+                </a>
+                <a href="/admin/orders" class="<%= page === 'orders' ? 'active' : '' %>">
+                    <i class="ph ph-package"></i> <%= t.orders %>
+                </a>
+                <a href="/admin/requests" class="<%= page === 'requests' ? 'active' : '' %>">
+                    <i class="ph ph-hand-waving"></i> <%= t.common.requests %>
+                </a>
+                <a href="/admin/settings" class="<%= page === 'settings' ? 'active' : '' %>">
+                    <i class="ph ph-gear"></i> <%= t.common.settings %>
+                </a>
+                <a href="/admin/ai" class="<%= page === 'ai' ? 'active' : '' %>">
+    <i class="ph ph-robot"></i> AI Analyst
+</a>
+            </nav>
+
+            <div class="logout">
+                <a href="/admin/logout"><i class="ph ph-sign-out"></i> <%= t.common.logout %></a>
+            </div>
+        </aside>
+
+            <main class="main-content">
+            <header>
+                <h1><%= title %></h1>
+            </header>

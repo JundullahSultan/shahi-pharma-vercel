@@ -1,0 +1,159 @@
+<%- include('../partials/user-header', { title: t.userRequest.pageTitle, page: 'request' }) %>
+
+        <section class="card" style="padding: 1rem;">
+          <div class="card-header" style="margin-bottom: 1rem;">
+            <h2><%= t.userRequest.detailsTitle %></h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem">
+              <%= t.userRequest.subtitle %> (Multiple allowed)
+            </p>
+          </div>
+
+          <div class="sheet-container">
+            <table class="sheet-table" id="requestSheet">
+              <thead>
+                <tr>
+                  <th class="row-num">#</th>
+                  <th><%= t.userRequest.medName %> *</th>
+                  <th><%= t.userRequest.companyName %> *</th>
+                  <th><%= t.common.quantity %> *</th>
+                  <th><%= t.userRequest.shapeDose %> *</th>
+                  <th><%= t.userRequest.tradeName %></th>
+                  <th><%= t.userRequest.scientificName %></th>
+                  <th><%= t.userRequest.description %></th>
+                  <th style="text-align: center; width: 50px;"><i class="ph ph-trash"></i></th>
+                </tr>
+              </thead>
+              <tbody id="sheetBody">
+                </tbody>
+            </table>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; gap: 1rem;">
+            <button type="button" class="btn-text" onclick="addRow()" style="display: flex; align-items: center; gap: 5px;">
+              <i class="ph ph-plus-circle" style="font-size: 1.2rem;"></i> Add Row
+            </button>
+            
+            <button type="button" class="btn-primary btn-submit" onclick="submitSheet()" style="width: auto; padding: 12px 24px; margin-top: 0;">
+              <i class="ph ph-paper-plane-right"></i> <%= t.userRequest.submitBtn %>
+            </button>
+          </div>
+        </section>
+
+        <div class="mobile-spacer" style="height: 100px"></div>
+      </main>
+    </div>
+
+    <%- include('../partials/mobile-nav', { page: 'request' }) %>
+
+    <script>
+      const currentPath = window.location.pathname;
+      document.querySelectorAll('.mobile-bottom-nav a').forEach((link) => {
+        if (link.getAttribute('href') === currentPath) link.classList.add('active');
+      });
+
+      const tbody = document.getElementById('sheetBody');
+      let rowCount = 0;
+
+      // Function to dynamically add a new row to the spreadsheet
+      function addRow() {
+        rowCount++;
+        const tr = document.createElement('tr');
+        tr.className = 'data-row';
+        tr.innerHTML = `
+          <td class="row-num">${rowCount}</td>
+          <td><input type="text" name="medicineName" placeholder="e.g. Panadol Extra" required></td>
+          <td><input type="text" name="companyName" placeholder="e.g. GSK" required></td>
+          <td><input type="number" name="quantity" placeholder="e.g. 50" min="1" required></td>
+          <td><input type="text" name="shapeAndDose" placeholder="e.g. Tablet 500mg" required></td>
+          <td><input type="text" name="tradeName" placeholder="Brand name"></td>
+          <td><input type="text" name="scientificName" placeholder="Generic name"></td>
+          <td><input type="text" name="description" placeholder="..."></td>
+          <td style="text-align: center;">
+            <button type="button" class="btn-icon danger" onclick="this.closest('tr').remove(); updateRowNumbers();" style="border:none; width: 30px; height: 30px; margin: auto;">
+              <i class="ph ph-trash"></i>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      }
+
+      function updateRowNumbers() {
+        const rows = document.querySelectorAll('.data-row .row-num');
+        rows.forEach((cell, index) => {
+          cell.textContent = index + 1;
+        });
+        rowCount = rows.length;
+      }
+
+      // Initialize with 3 empty rows
+      addRow(); addRow(); addRow();
+
+      // Submit all rows
+      async function submitSheet() {
+        const rows = document.querySelectorAll('.data-row');
+        const requestsData = [];
+        let isValid = true;
+
+        rows.forEach(row => {
+          const medName = row.querySelector('[name="medicineName"]').value.trim();
+          const company = row.querySelector('[name="companyName"]').value.trim();
+          const qty = row.querySelector('[name="quantity"]').value;
+          const shape = row.querySelector('[name="shapeAndDose"]').value.trim();
+          
+          // Only collect rows where at least the medicine name is filled out
+          if (medName) {
+            if (!company || !qty || !shape) {
+              isValid = false;
+              row.style.boxShadow = "inset 0 0 0 2px red"; // Highlight invalid row
+            } else {
+              row.style.boxShadow = "none";
+              requestsData.push({
+                medicineName: medName,
+                companyName: company,
+                quantity: qty,
+                shapeAndDose: shape,
+                tradeName: row.querySelector('[name="tradeName"]').value.trim(),
+                scientificName: row.querySelector('[name="scientificName"]').value.trim(),
+                description: row.querySelector('[name="description"]').value.trim(),
+              });
+            }
+          }
+        });
+
+        if (!isValid) {
+          return alert('Please fill all required (*) fields in your rows.');
+        }
+
+        if (requestsData.length === 0) {
+          return alert('Please enter at least one medicine request.');
+        }
+
+        const btn = document.querySelector('.btn-submit');
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = `<i class="ph ph-spinner ph-spin"></i> <%= t.userRequest.sending %>`;
+        btn.disabled = true;
+
+        try {
+          const res = await fetch('/user/request', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ requests: requestsData }), // Send as an array
+          });
+
+          if (res.ok) {
+            btn.style.backgroundColor = 'var(--success)';
+            btn.innerHTML = `<i class="ph ph-check"></i> <%= t.userRequest.sentSuccess %>`;
+            setTimeout(() => (window.location.href = '/user/my-requests'), 1000);
+          } else {
+            alert('Error sending request');
+            btn.innerHTML = originalHTML;
+            btn.disabled = false;
+          }
+        } catch (err) {
+          alert('Network error');
+          btn.innerHTML = originalHTML;
+          btn.disabled = false;
+        }
+      }
+    </script>
+<%- include('../partials/footer') %>

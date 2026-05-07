@@ -1,0 +1,86 @@
+<%- include('../partials/user-header', { title: t.userMyRequests.title, page: 'my-requests' }) %>
+
+            <div style="margin-bottom: 20px; display: flex; justify-content: flex-end;">
+                <a href="/user/request" class="btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                    <i class="ph ph-plus"></i> <%= t.userMyRequests.btnNewRequest %>
+                </a>
+      
+            </div>
+
+            <section class="card">
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                    
+                            <tr>
+                                <th><%= t.userMyRequests.thMedName %></th>
+                                <th><%= t.userMyRequests.thCompany %></th>
+                           
+                                <th><%= t.userMyRequests.thQty %></th>
+                                <th><%= t.userMyRequests.thDate %></th>
+                                <th><%= t.userMyRequests.thStatus %></th>
+                            </tr>
+  
+                        </thead>
+                        <tbody>
+                            <% if (requests && requests.length > 0) { %>
+                  
+                                <% requests.forEach(req => { %>
+                                    <tr>
+                                        <td>
+      
+                                            <strong><%= req.medicineName %></strong>
+                                            <div style="font-size: 0.8rem; color: var(--text-muted);">
+                                                <%= req.shapeAndDose %>
+                                            </div>
+     
+                                        </td>
+                                        <td><%= req.companyName %></td>
+                       
+                                        <td><%= req.quantity %></td>
+                                        
+                                        <% 
+                                        const date = new Date(req.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %>
+                                        <td><%= date %></td>
+
+                                        <td>
+     
+                                            <span class="badge <%= req.status.toLowerCase() %>">
+                                                <%= req.status %>
+       
+                                            </span>
+                                        </td>
+                       
+                                    </tr>
+                                <% }) %>
+                            <% } else { %>
+                     
+                                <tr>
+                                    <td colspan="5" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                                        <i class="ph ph-notebook" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
+                                        <%= t.userMyRequests.noRequestsIcon %>
+                                    </td>
+                   
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+             
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <%- include('../partials/mobile-nav', { page: 'my-requests' }) %>
+
+    <script>
+        // Highlight active mobile nav link
+        const currentPath = window.location.pathname;
+        document.querySelectorAll('.mobile-bottom-nav a').forEach(link => {
+         
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active');
+            }
+        });
+    </script>
+<%- include('../partials/footer') %>
